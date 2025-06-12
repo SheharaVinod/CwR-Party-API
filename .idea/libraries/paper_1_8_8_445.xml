@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="paper-1.8.8-445">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../minecraft/CaptureTheFlagMinecraftServer/paper-1.8.8-445.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

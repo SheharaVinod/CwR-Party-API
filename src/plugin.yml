@@ -1,0 +1,22 @@
+name: CwRPartyAPI
+main: lk.cwresports.CwRPartyAPI.CwRPartyAPI
+version: 1.0.0
+author: Mr_Unknown
+website: cwresport.lk
+description: Party api for manage players with party.
+
+commands:
+  party:
+    description: main command for working with party.
+    permission: cwr-core.party-api.main
+    permission-message: You don't have permission to execute this command.
+    usage: /party help
+
+permissions:
+  cwr-core.party-api.main:
+    description: this permission need to execute every party related command. basically for the main command.
+    default: true
+
+  cwr-core.party-api.admin:
+    default: op
+    description: this permission can handle all admin related things in a party.
