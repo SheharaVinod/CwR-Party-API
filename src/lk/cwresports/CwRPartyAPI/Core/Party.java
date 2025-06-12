@@ -61,6 +61,10 @@ public class Party {
         invited_players.add(player);
     }
 
+    public void denied(Player player) {
+        invited_players.remove(player);
+    }
+
     public void disbandParty() {
         for (Player member : getMembers()) {
             removePlayer(member);
