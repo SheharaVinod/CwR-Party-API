@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
+  <diagram name="Page-1" id="ioBs0ZQ36B1cF6iXQJgT">
+    <mxGraphModel dx="2076" dy="732" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AAPLDznnd376ae4-c3LF-1" value="Party&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-60" y="230" width="250" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-2" value="- list_of_members: Player[]&lt;div&gt;- owner: Player&lt;/div&gt;&lt;div&gt;- invited_players: Player[]&lt;/div&gt;&lt;div&gt;- is_public: bool&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AAPLDznnd376ae4-c3LF-1">
+          <mxGeometry y="26" width="250" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="AAPLDznnd376ae4-c3LF-1">
+          <mxGeometry y="100" width="250" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-4" value="+ getOwner(): Player @Notnull&lt;div&gt;+ getCoreOwner(): Player @Nullable&lt;/div&gt;&lt;div&gt;+ getMembers(): Player[]&lt;/div&gt;&lt;div&gt;+ invite(Player): None&lt;/div&gt;&lt;div&gt;+ disbandParty(): None&lt;/div&gt;&lt;div&gt;+ addPlayer(Player): int -1 , 0, 1&lt;/div&gt;&lt;div&gt;+ removePlayer(Player): int -1, 0, 1&lt;/div&gt;&lt;div&gt;+ open(): None # public&lt;/div&gt;&lt;div&gt;+ close(): None&lt;/div&gt;&lt;div&gt;+ isOpen(): bool&lt;/div&gt;&lt;div&gt;+ mergeWith(Party): None&lt;/div&gt;&lt;div&gt;+ promote(Player): None&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AAPLDznnd376ae4-c3LF-1">
+          <mxGeometry y="108" width="250" height="212" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-6" value="PartyManager" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="120" width="250" height="178" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-7" value="- playerPartyMap: Map&amp;lt;Player,Party&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AAPLDznnd376ae4-c3LF-6">
+          <mxGeometry y="26" width="250" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-8" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="AAPLDznnd376ae4-c3LF-6">
+          <mxGeometry y="70" width="250" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-9" value="+ isInAParty(Player): bool&lt;div&gt;+ getPartyOf(Player): Party @Nullable&lt;/div&gt;&lt;div&gt;~ getInstance(): self # singleton&lt;/div&gt;&lt;div&gt;~ registerParty(Party): None&lt;/div&gt;&lt;div&gt;~ regPlayer(Player, Party): None&lt;/div&gt;&lt;div&gt;~ unRegPlayer(Player): None&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AAPLDznnd376ae4-c3LF-6">
+          <mxGeometry y="78" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-10" value="CwRPartyApi(JavaPlugin)&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="470" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-11" value="- manager: PartyManager&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AAPLDznnd376ae4-c3LF-10">
+          <mxGeometry y="26" width="210" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-12" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="AAPLDznnd376ae4-c3LF-10">
+          <mxGeometry y="52" width="210" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-13" value="+ getManager(): PartyManager&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AAPLDznnd376ae4-c3LF-10">
+          <mxGeometry y="60" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-14" value="PartyGUI&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-370" y="60" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-16" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="AAPLDznnd376ae4-c3LF-14">
+          <mxGeometry y="26" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-17" value="+ createParty(Player): None&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AAPLDznnd376ae4-c3LF-14">
+          <mxGeometry y="34" width="240" height="106" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-35" value="Contain&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;rounded=0;entryX=-0.008;entryY=0.124;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="AAPLDznnd376ae4-c3LF-4" target="AAPLDznnd376ae4-c3LF-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="410" as="sourcePoint" />
+            <mxPoint x="490" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-36" value="0..n" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;" connectable="0" vertex="1" parent="AAPLDznnd376ae4-c3LF-35">
+          <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-37" value="1" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=top;" connectable="0" vertex="1" parent="AAPLDznnd376ae4-c3LF-35">
+          <mxGeometry x="1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.478;entryY=0.996;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="AAPLDznnd376ae4-c3LF-10" target="AAPLDznnd376ae4-c3LF-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-43" value="Has" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="AAPLDznnd376ae4-c3LF-42">
+          <mxGeometry x="0.0929" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-44" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="AAPLDznnd376ae4-c3LF-42">
+          <mxGeometry x="-0.9617" y="-1" relative="1" as="geometry">
+            <mxPoint x="4" y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AAPLDznnd376ae4-c3LF-45" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="AAPLDznnd376ae4-c3LF-42">
+          <mxGeometry x="0.9154" relative="1" as="geometry">
+            <mxPoint x="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

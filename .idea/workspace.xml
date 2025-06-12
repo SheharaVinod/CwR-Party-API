@@ -4,23 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/paper_1_8_8_445.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CwR-Party-API.iml" afterDir="false" />
+    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Structured the plugin.">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/CwR_Party_API_APIs_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/CwR_Party_API_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/spigot_api_1_8_8_R0_1_20160221_082514_43_javadoc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/spigot_api_1_8_8_R0_1_20160221_082514_43_shaded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/spigot_api_1_8_8_R0_1_20160221_082514_43_sources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APIs/APIs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerJoinPartyEvent.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/CwR-PartyAPI.drawio.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Commands/PartyCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Core/Party.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Core/PartyManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Tabs/PartyTabs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Utils/TextStrings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/paper_1_8_8_445.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CwR-Party-API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CwR-Party-API.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Core/Party.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Core/Party.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Core/PartyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Core/PartyManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +47,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Shehara/Programming/Java/Project/CwR-Party-API/resources",
-    "project.structure.last.edited": "Libraries",
+    "last_opened_file_path": "C:/Shehara/Programming/Java/Project/CwR-Party-API/src/plugin.yml",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.16015625",
     "project.structure.side.proportion": "0.34575087"
   }
@@ -72,6 +72,19 @@
       <option name="presentableId" value="Default" />
       <updated>1749750772861</updated>
     </task>
+    <task id="LOCAL-00001" summary="Structured the plugin.">
+      <option name="closed" value="true" />
+      <created>1749753892511</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749753892512</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Structured the plugin." />
+    <option name="LAST_COMMIT_MESSAGE" value="Structured the plugin." />
   </component>
 </project>

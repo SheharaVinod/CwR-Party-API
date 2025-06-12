@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="CwR-Party-API-APIs:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CwR_Party_API_APIs_jar</output-path>
+    <root id="archive" name="APIs.jar">
+      <element id="module-output" name="APIs" />
+    </root>
+  </artifact>
+</component>

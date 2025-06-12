@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/APIs/APIs.iml" filepath="$PROJECT_DIR$/APIs/APIs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CwR-Party-API.iml" filepath="$PROJECT_DIR$/CwR-Party-API.iml" />
+    </modules>
+  </component>
+</project>
