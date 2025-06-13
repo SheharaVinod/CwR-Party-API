@@ -9,22 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Setup basic command structure.">
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/OwnerInviteToPartyEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/OwnerOfflineEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyCloseEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyDisbandEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyInvitePartyToMergeEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyOpenEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerDeniedInvitationEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerKickPartyEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerLeavePartyEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerPromotePartyEvent.java" afterDir="false" />
+    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Add More Party events to APIs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CwR-Party-API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CwR-Party-API.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Core/Party.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/Party.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Core/PartyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/PartyManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/OwnerInviteToPartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/OwnerInviteToPartyEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/OwnerOfflineEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/OwnerOfflineEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyCloseEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyCloseEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyDisbandEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyDisbandEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyInvitePartyToMergeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyInvitePartyToMergeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyOpenEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyOpenEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerDeniedInvitationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerDeniedInvitationEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerJoinPartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerJoinPartyEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerKickPartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerKickPartyEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerLeavePartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerLeavePartyEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerPromotePartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerPromotePartyEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/Party.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/Party.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,13 +103,22 @@
       <option name="project" value="LOCAL" />
       <updated>1749770565787</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add More Party events to APIs">
+      <option name="closed" value="true" />
+      <created>1749816358561</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1749816358561</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Structured the plugin." />
     <MESSAGE value="Adding Core concept." />
     <MESSAGE value="Setup basic command structure." />
-    <option name="LAST_COMMIT_MESSAGE" value="Setup basic command structure." />
+    <MESSAGE value="Add More Party events to APIs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add More Party events to APIs" />
   </component>
 </project>

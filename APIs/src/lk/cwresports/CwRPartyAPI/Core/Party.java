@@ -18,7 +18,6 @@ public class Party {
     }
 
     public Player getOwner() {
-        // nullable
         if (owner.isOnline()) {
             return owner;
         } else {
@@ -36,7 +35,7 @@ public class Party {
 
     public Player getCoreOwner() {
         if (list_of_players.isEmpty()) {
-            return null;
+            return owner;
         }
         return list_of_players.getFirst();
     }
