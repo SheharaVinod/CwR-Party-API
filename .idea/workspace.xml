@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Complete lot of sub commands">
+    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Adding Tab complete functionality.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Commands/PartyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Commands/PartyCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Tabs/PartyTabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Tabs/PartyTabs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749833083701</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Adding Tab complete functionality.">
+      <option name="closed" value="true" />
+      <created>1749837578015</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1749837578015</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -128,6 +136,7 @@
     <MESSAGE value="Add More Party events to APIs" />
     <MESSAGE value="Complete party events" />
     <MESSAGE value="Complete lot of sub commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete lot of sub commands" />
+    <MESSAGE value="Adding Tab complete functionality." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Tab complete functionality." />
   </component>
 </project>

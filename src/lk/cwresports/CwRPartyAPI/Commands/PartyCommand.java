@@ -16,6 +16,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
 public class PartyCommand implements CommandExecutor {
+    private static final String name = "party";
+
     public static final String CREATE = "create";
     public static final String JOIN = "join";
     public static final String LEAVE = "leave";
@@ -271,5 +273,9 @@ public class PartyCommand implements CommandExecutor {
         for (String massages : TextStrings.help) {
             sender.sendMessage(massages);
         }
+    }
+
+    public static String getName() {
+        return name;
     }
 }
