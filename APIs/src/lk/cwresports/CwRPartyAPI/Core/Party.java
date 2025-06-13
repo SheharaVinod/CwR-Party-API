@@ -18,6 +18,7 @@ public class Party {
     }
 
     public Player getOwner() {
+        // nullable
         if (owner.isOnline()) {
             return owner;
         } else {
@@ -32,7 +33,6 @@ public class Party {
     public boolean isOwner(Player player) {
         return player == getOwner();
     }
-
 
     public Player getCoreOwner() {
         if (list_of_players.isEmpty()) {

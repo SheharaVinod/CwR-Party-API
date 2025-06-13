@@ -20,5 +20,6 @@
     <orderEntry type="library" name="spigot-api-1.8.8-R0.1-20160221.082514-43-shaded" level="project" />
     <orderEntry type="library" name="spigot-api-1.8.8-R0.1-20160221.082514-43-javadoc" level="project" />
     <orderEntry type="library" name="spigot-api-1.8.8-R0.1-20160221.082514-43-sources" level="project" />
+    <orderEntry type="module" module-name="APIs" />
   </component>
 </module>
