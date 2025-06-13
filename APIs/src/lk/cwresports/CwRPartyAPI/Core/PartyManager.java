@@ -8,6 +8,8 @@ import java.util.Map;
 public class PartyManager {
     private static PartyManager instance;
     private final Map<Player, Party> playerPartyMap = new HashMap<>();
+    private final Map<Party, Party> partyPartyMap = new HashMap<>();
+
 
     public boolean isInAParty(Player player) {
         return playerPartyMap.containsKey(player);
@@ -32,6 +34,4 @@ public class PartyManager {
     protected void unregisterPlayer(Player player) {
         playerPartyMap.remove(player);
     }
-
-
 }

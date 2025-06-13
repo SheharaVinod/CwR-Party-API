@@ -1,6 +1,9 @@
 package lk.cwresports.CwRPartyAPI.Core;
 
+import lk.cwresports.CwRPartyAPI.APIs.Events.*;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 
 import java.util.*;
 
@@ -56,15 +59,33 @@ public class Party {
         return playerList;
     }
 
+    @SuppressWarnings("Please don't use derectly use PartyManager instead.")
     public void invite(Player player) {
+        // call event
+        Event event = new OwnerInviteToPartyEvent(this, player);
+        Bukkit.getPluginManager().callEvent(event);
+
         invited_players.add(player);
     }
 
+    public boolean hasInvite(Player player) {
+        if (isOpened) return true;
+        return invited_players.contains(player);
+    }
+
     public void denied(Player player) {
+        // call event
+        Event event = new PlayerDeniedInvitationEvent(player, this);
+        Bukkit.getPluginManager().callEvent(event);
+
         invited_players.remove(player);
     }
 
     public void disbandParty() {
+        // call event
+        Event event = new PartyDisbandEvent(this);
+        Bukkit.getPluginManager().callEvent(event);
+
         for (Player member : getMembers()) {
             removePlayer(member);
         }
@@ -90,10 +111,18 @@ public class Party {
 
     public void open() {
         isOpened = true;
+
+        // call event
+        Event event = new PartyOpenEvent(this);
+        Bukkit.getPluginManager().callEvent(event);
     }
 
     public void closed() {
         isOpened = false;
+
+        // call event
+        Event event = new PartyCloseEvent(this);
+        Bukkit.getPluginManager().callEvent(event);
     }
 
     public boolean isOpened() {
@@ -114,6 +143,10 @@ public class Party {
     }
 
     public void promote(Player player) {
+        // call event
+        Event event = new PlayerPromotePartyEvent(this, player, owner);
+        Bukkit.getPluginManager().callEvent(event);
+
         if (!list_of_players.contains(player)) return;
         list_of_players.remove(player);
         addPlayerLast(owner);
