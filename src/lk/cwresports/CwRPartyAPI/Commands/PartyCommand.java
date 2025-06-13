@@ -16,14 +16,25 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
 public class PartyCommand implements CommandExecutor {
-    private static final String CREATE = "create";
-    private static final String JOIN = "join";
-    private static final String LEAVE = "leave";
-    private static final String HELP = "help";
-    private static final String DISBAND = "disband";
-    private static final String KICK = "kick";
-    private static final String INVITE = "invite";
-    private static final String PROMOTE = "promote";
+    public static final String CREATE = "create";
+    public static final String JOIN = "join";
+    public static final String LEAVE = "leave";
+    public static final String HELP = "help";
+    public static final String DISBAND = "disband";
+    public static final String KICK = "kick";
+    public static final String INVITE = "invite";
+    public static final String PROMOTE = "promote";
+
+    public static final String[] subCommands = {
+            CREATE,
+            JOIN,
+            LEAVE,
+            HELP,
+            DISBAND,
+            KICK,
+            INVITE,
+            PROMOTE
+    };
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
