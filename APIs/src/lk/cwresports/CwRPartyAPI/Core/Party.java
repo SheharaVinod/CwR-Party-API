@@ -18,6 +18,10 @@ public class Party {
         this.owner = owner;
         manager = PartyManager.getInstance();
         manager.registerPlayer(owner, this);
+
+        // call event
+        Event event = new PlayerCreatePartyEvent(owner, this);
+        Bukkit.getPluginManager().callEvent(event);
     }
 
     public Player getOwner() {
@@ -93,6 +97,8 @@ public class Party {
     }
 
     public void addPlayer(Player player) {
+        if (player == owner) return;
+
         if (isOpened) {
             add_player_If_he_is_not_already_in_the_party_and_not_the_owner(player);
             return;

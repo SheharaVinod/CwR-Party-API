@@ -74,7 +74,7 @@ public class PartyCommand implements CommandExecutor {
 
     private void create(Player sender, String[] strings) {
         //party create <player> <player> <player> <player> ...
-        if (PartyManager.getInstance().isInAParty(sender)) {
+        if (!PartyManager.getInstance().isInAParty(sender)) {
             Party party = new Party(sender);
             if (strings.length > 1) {
                 for (int i = 1; i < strings.length; i++) {
@@ -87,7 +87,7 @@ public class PartyCommand implements CommandExecutor {
                 }
             }
         } else {
-            sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_NOT_IN_A_PARTY));
+            sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_ALREADY_IN_A_PARTY));
         }
     }
 
@@ -100,10 +100,6 @@ public class PartyCommand implements CommandExecutor {
                     try {
                         Player player = Bukkit.getPlayer(strings[i]);
                         party.invite(player);
-
-                        // call event
-                        Event event = new OwnerInviteToPartyEvent(party, sender);
-                        Bukkit.getPluginManager().callEvent(event);
                     } catch (Exception e) {
                         sender.sendMessage(TextStrings.colorize(TextStrings.PLAYER_NOT_ONLINE.formatted(strings[i])));
                     }
@@ -271,7 +267,7 @@ public class PartyCommand implements CommandExecutor {
     private void help(Player sender, String[] strings) {
         //party help
         for (String massages : TextStrings.help) {
-            sender.sendMessage(massages);
+            sender.sendMessage(TextStrings.colorize(massages, false));
         }
     }
 

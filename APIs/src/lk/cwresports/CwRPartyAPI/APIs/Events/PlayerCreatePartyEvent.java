@@ -5,29 +5,22 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import java.util.List;
-
-public class PlayerJoinPartyEvent extends Event {
-
+public class PlayerCreatePartyEvent extends Event {
     private static final HandlerList handlerList = new HandlerList();
-    private final Player joinedPlayer;
+    private final Player owner;
     private final Party party;
 
-    public PlayerJoinPartyEvent(Player joinedPlayer, Party party) {
-        this.joinedPlayer = joinedPlayer;
+    public PlayerCreatePartyEvent(Player owner, Party party) {
+        this.owner = owner;
         this.party = party;
-    }
-
-    public Player getJoinedPlayer() {
-        return joinedPlayer;
-    }
-
-    public List<Player> getMembersExceptJoinedPlayer() {
-        return party.getAllMembersExcept(joinedPlayer);
     }
 
     public Party getParty() {
         return party;
+    }
+
+    public Player getOwner() {
+        return owner;
     }
 
     @Override
