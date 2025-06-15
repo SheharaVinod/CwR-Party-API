@@ -1,9 +1,8 @@
 package lk.cwresports.CwRPartyAPI.Commands;
 
-import lk.cwresports.CwRPartyAPI.APIs.Events.OwnerInviteToPartyEvent;
-import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerJoinPartyEvent;
-import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerKickPartyEvent;
-import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerLeavePartyEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerJoinPartyEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerKickPartyEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerLeavePartyEvent;
 import lk.cwresports.CwRPartyAPI.Core.Party;
 import lk.cwresports.CwRPartyAPI.Core.PartyManager;
 import lk.cwresports.CwRPartyAPI.Utils.CwRBetterConsoleLogger;

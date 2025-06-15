@@ -1,4 +1,4 @@
-package lk.cwresports.CwRPartyAPI.APIs.Events;
+package lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated;
 
 import lk.cwresports.CwRPartyAPI.Core.Party;
 import org.bukkit.event.Event;

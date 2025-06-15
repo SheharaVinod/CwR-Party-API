@@ -1,9 +1,13 @@
 package lk.cwresports.CwRPartyAPI.Core;
 
-import lk.cwresports.CwRPartyAPI.APIs.Events.*;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyCloseEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyDisbandEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyOpenEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
+import org.bukkit.plugin.Plugin;
 
 import java.util.*;
 
@@ -11,11 +15,23 @@ public class Party {
     private Player owner;
     private final LinkedList<Player> list_of_players = new LinkedList<>();
     private final Set<Player> invited_players = new HashSet<>();
+    private final Set<Player> invited_parties = new HashSet<>();
     private boolean isOpened = false;
     private final PartyManager manager;
+    private final Plugin plugin;
 
-    public Party(Player owner) {
+    // times.
+    private final long party_join_invite_expired_in;
+    private final long party_merge_invite_expired_in;
+
+
+    public Party(Player owner, Plugin plugin, long join_exp, long merge_exp) {
         this.owner = owner;
+        this.plugin = plugin;
+
+        this.party_merge_invite_expired_in = merge_exp;
+        this.party_join_invite_expired_in = join_exp;
+
         manager = PartyManager.getInstance();
         manager.registerPlayer(owner, this);
 
@@ -64,12 +80,25 @@ public class Party {
     }
 
     @SuppressWarnings("Please don't use derectly use PartyManager instead.")
-    public void invite(Player player) {
-        // call event
-        Event event = new OwnerInviteToPartyEvent(this, player);
-        Bukkit.getPluginManager().callEvent(event);
+    public void invite(Player player, InviteTo to) {
+        if (to == InviteTo.JOIN_PARTY) {
+            // call event
+            Event event = new OwnerInviteToPartyEvent(this, player);
+            Bukkit.getPluginManager().callEvent(event);
 
-        invited_players.add(player);
+            invited_players.add(player);
+
+            Bukkit.getScheduler().runTaskLater(plugin, party_join_invite_expired_in,)
+        } else if (to == InviteTo.MERGE_WITH_PARTY) {
+            boolean inAParty = manager.isInAParty(player);
+            if (inAParty) {
+                // call event
+                Event event = new OwnerInviteToMergePartyEvent(this, manager.getPartyOf(player));
+                Bukkit.getPluginManager().callEvent(event);
+
+                invited_parties.add(player);
+            }
+        }
     }
 
     public boolean hasInvite(Player player) {

@@ -1,23 +1,29 @@
-package lk.cwresports.CwRPartyAPI.APIs.Events;
+package lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated;
 
 import lk.cwresports.CwRPartyAPI.Core.Party;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class OwnerOfflineEvent extends Event {
+import java.util.List;
+
+public class PlayerJoinPartyEvent extends Event {
 
     private static final HandlerList handlerList = new HandlerList();
-    private final Player owner;
+    private final Player joinedPlayer;
     private final Party party;
 
-    public OwnerOfflineEvent(Player owner, Party party) {
-        this.owner = owner;
+    public PlayerJoinPartyEvent(Player joinedPlayer, Party party) {
+        this.joinedPlayer = joinedPlayer;
         this.party = party;
     }
 
-    public Player getOwner() {
-        return owner;
+    public Player getJoinedPlayer() {
+        return joinedPlayer;
+    }
+
+    public List<Player> getMembersExceptJoinedPlayer() {
+        return party.getAllMembersExcept(joinedPlayer);
     }
 
     public Party getParty() {

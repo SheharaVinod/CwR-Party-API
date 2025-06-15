@@ -1,17 +1,14 @@
-package lk.cwresports.CwRPartyAPI.APIs.Events;
+package lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated;
 
 import lk.cwresports.CwRPartyAPI.Core.Party;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class PlayerLeavePartyEvent extends Event {
+public class PartyOpenEvent extends Event {
     private static final HandlerList handlerList = new HandlerList();
-    private final Player leavedPlayer;
     private final Party party;
 
-    public PlayerLeavePartyEvent(Player leavedPlayer, Party party) {
-        this.leavedPlayer = leavedPlayer;
+    public PartyOpenEvent(Party party) {
         this.party = party;
     }
 
@@ -21,10 +18,6 @@ public class PlayerLeavePartyEvent extends Event {
 
     public Party getParty() {
         return party;
-    }
-
-    public Player getLeavedPlayer() {
-        return leavedPlayer;
     }
 
     @Override
