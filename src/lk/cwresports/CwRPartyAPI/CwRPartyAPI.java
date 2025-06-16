@@ -13,7 +13,7 @@ public class CwRPartyAPI extends JavaPlugin {
     @Override
     public void onEnable() {
         // register commands
-        getCommand(PartyCommand.getName()).setExecutor(new PartyCommand());
+        getCommand(PartyCommand.getName()).setExecutor(new PartyCommand(this));
 
         // register tab competes
         getCommand(PartyCommand.getName()).setTabCompleter(new PartyTabs());
@@ -25,5 +25,4 @@ public class CwRPartyAPI extends JavaPlugin {
         CwRBetterConsoleLogger.log("&6------CwR-Party-API-----");
         CwRBetterConsoleLogger.log("&6------------------------");
     }
-
 }

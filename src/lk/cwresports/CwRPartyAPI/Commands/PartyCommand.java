@@ -1,8 +1,8 @@
 package lk.cwresports.CwRPartyAPI.Commands;
 
-import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerJoinPartyEvent;
-import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerKickPartyEvent;
-import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerLeavePartyEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Mechanics.InvitationTypes.JoinToPartyInvitationType;
+import lk.cwresports.CwRPartyAPI.APIs.Mechanics.PlayerRemovingTypes.KickPlayer;
+import lk.cwresports.CwRPartyAPI.APIs.Mechanics.PlayerRemovingTypes.LeftPlayer;
 import lk.cwresports.CwRPartyAPI.Core.Party;
 import lk.cwresports.CwRPartyAPI.Core.PartyManager;
 import lk.cwresports.CwRPartyAPI.Utils.CwRBetterConsoleLogger;
@@ -12,9 +12,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
+import org.bukkit.plugin.Plugin;
+
+import java.util.List;
 
 public class PartyCommand implements CommandExecutor {
+    private final Plugin plugin;
     private static final String name = "party";
 
     public static final String CREATE = "create";
@@ -25,6 +28,10 @@ public class PartyCommand implements CommandExecutor {
     public static final String KICK = "kick";
     public static final String INVITE = "invite";
     public static final String PROMOTE = "promote";
+    public static final String OPEN = "open";
+    public static final String CLOSE = "close";
+    public static final String MEMBERS = "members";
+    public static final String LIST = "list";
 
     public static final String[] subCommands = {
             CREATE,
@@ -34,8 +41,16 @@ public class PartyCommand implements CommandExecutor {
             DISBAND,
             KICK,
             INVITE,
-            PROMOTE
+            PROMOTE,
+            OPEN,
+            CLOSE,
+            MEMBERS,
+            LIST
     };
+
+    public PartyCommand(Plugin plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -65,6 +80,14 @@ public class PartyCommand implements CommandExecutor {
                 disband(sender, strings);
             } else if (strings[0].equalsIgnoreCase(HELP)) {
                 help(sender, strings);
+            } else if (strings[0].equalsIgnoreCase(OPEN)) {
+                open(sender, strings);
+            } else if (strings[0].equalsIgnoreCase(CLOSE)) {
+                close(sender, strings);
+            } else if (strings[0].equalsIgnoreCase(MEMBERS)) {
+                members(sender, strings);
+            } else if (strings[0].equalsIgnoreCase(LIST)) {
+                list(sender, strings);
             }
         }
 
@@ -74,17 +97,8 @@ public class PartyCommand implements CommandExecutor {
     private void create(Player sender, String[] strings) {
         //party create <player> <player> <player> <player> ...
         if (!PartyManager.getInstance().isInAParty(sender)) {
-            Party party = new Party(sender);
-            if (strings.length > 1) {
-                for (int i = 1; i < strings.length; i++) {
-                    try {
-                        Player player = Bukkit.getPlayer(strings[i]);
-                        party.addPlayer(player);
-                    } catch (Exception e) {
-                        sender.sendMessage(TextStrings.colorize(TextStrings.PLAYER_NOT_ONLINE.formatted(strings[i])));
-                    }
-                }
-            }
+            Party party = new Party(sender, plugin);
+            invite(strings, sender, party);
         } else {
             sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_ALREADY_IN_A_PARTY));
         }
@@ -94,45 +108,57 @@ public class PartyCommand implements CommandExecutor {
         //party invite <player> <player> <player> ...
         if (PartyManager.getInstance().isInAParty(sender)) {
             Party party = PartyManager.getInstance().getPartyOf(sender);
-            if (strings.length > 1) {
-                for (int i = 1; i < strings.length; i++) {
-                    try {
-                        Player player = Bukkit.getPlayer(strings[i]);
-                        party.invite(player);
-                    } catch (Exception e) {
-                        sender.sendMessage(TextStrings.colorize(TextStrings.PLAYER_NOT_ONLINE.formatted(strings[i])));
-                    }
-                }
-            }
+            invite(strings, sender, party);
         } else {
             sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_NOT_IN_A_PARTY));
         }
     }
 
+    private void invite(String[] strings, Player owner, Party party) {
+        if (strings.length > 0) {
+            for (int i = 1; i < strings.length; i++) {
+                try {
+                    Player player = Bukkit.getPlayer(strings[i]);
+
+                    if (player == null) {
+                        owner.sendMessage(TextStrings.colorize(TextStrings.PLAYER_NOT_ONLINE.formatted(strings[i])));
+                        continue;
+                    }
+
+                    party.invite(player, new JoinToPartyInvitationType(party, player, 20 * 60));
+                } catch (Exception e) {
+                    owner.sendMessage(TextStrings.colorize(TextStrings.PLAYER_NOT_ONLINE.formatted(strings[i])));
+                }
+            }
+        }
+    }
+
     private void join(Player sender, String[] strings) {
-        //party join <player>
-        Player player;
+        //party join <partyOwner>
+        if (PartyManager.getInstance().isInAParty(sender)) {
+            sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_ALREADY_IN_A_PARTY));
+            return;
+        }
+
+        Player partyOwner;
         try {
-            player = Bukkit.getPlayer(strings[1]);
+            partyOwner = Bukkit.getPlayer(strings[1]);
         } catch (Exception e) {
             sender.sendMessage(TextStrings.colorize(TextStrings.PLAYER_NOT_ONLINE.formatted(strings[1])));
             return;
         }
 
         try {
-            if (PartyManager.getInstance().isInAParty(player)) {
-                Party party = PartyManager.getInstance().getPartyOf(sender);
-                if (party.hasInvite(player)) {
-                    party.addPlayer(player);
+            if (PartyManager.getInstance().isInAParty(partyOwner)) {
+                Party party = PartyManager.getInstance().getPartyOf(partyOwner);
 
-                    // call event
-                    Event event = new PlayerJoinPartyEvent(player, party);
-                    Bukkit.getPluginManager().callEvent(event);
+                if (party.hasInvite(sender, JoinToPartyInvitationType.class)) {
+                    party.addPlayer(sender);
                 } else {
                     sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_NOT_INVITED));
                 }
             } else {
-                sender.sendMessage(TextStrings.PLAYER_HAS_NO_PARTY.formatted(player.getName()));
+                sender.sendMessage(TextStrings.colorize(TextStrings.PLAYER_HAS_NO_PARTY.formatted(partyOwner.getName())));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -147,11 +173,8 @@ public class PartyCommand implements CommandExecutor {
                 for (int i = 1; i < strings.length; i++) {
                     try {
                         Player player = Bukkit.getPlayer(strings[i]);
-                        party.removePlayer(player);
+                        party.removePlayer(new KickPlayer(player, party.getMembers()));
 
-                        // call event
-                        Event event = new PlayerKickPartyEvent(player, party);
-                        Bukkit.getPluginManager().callEvent(event);
                     } catch (Exception e) {
                         sender.sendMessage(TextStrings.colorize(TextStrings.PLAYER_NOT_ONLINE.formatted(strings[i])));
                     }
@@ -194,6 +217,7 @@ public class PartyCommand implements CommandExecutor {
 
     private void denied(Player sender, String[] strings) {
         //party denied
+
     }
 
     private void disband(Player sender, String[] strings) {
@@ -203,6 +227,8 @@ public class PartyCommand implements CommandExecutor {
             if (party.isOwner(sender)) {
                 party.disbandParty();
             }
+        } else {
+            sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_NOT_IN_A_PARTY));
         }
     }
 
@@ -216,10 +242,9 @@ public class PartyCommand implements CommandExecutor {
                 return;
             }
 
-            // call event
-            Event event = new PlayerLeavePartyEvent(sender, party);
-            Bukkit.getServer().getPluginManager().callEvent(event);
-            party.removePlayer(sender);
+            party.removePlayer(new LeftPlayer(sender, party.getMembers()));
+        } else {
+            sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_NOT_IN_A_PARTY));
         }
     }
 
@@ -239,6 +264,8 @@ public class PartyCommand implements CommandExecutor {
 
             party.open();
             sender.sendMessage(TextStrings.colorize(TextStrings.PARTY_OPENED));
+        } else {
+            sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_NOT_IN_A_PARTY));
         }
     }
 
@@ -259,6 +286,8 @@ public class PartyCommand implements CommandExecutor {
 
             party.closed();
             sender.sendMessage(TextStrings.colorize(TextStrings.PARTY_CLOSED));
+        } else {
+            sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_NOT_IN_A_PARTY));
         }
     }
 
@@ -268,6 +297,46 @@ public class PartyCommand implements CommandExecutor {
         for (String massages : TextStrings.help) {
             sender.sendMessage(TextStrings.colorize(massages, false));
         }
+    }
+
+    public void members(Player sender, String[] strings) {
+        //party members
+        PartyManager manager = PartyManager.getInstance();
+        boolean inAParty = manager.isInAParty(sender);
+        if (inAParty) {
+            Party party = manager.getPartyOf(sender);
+            List<String> allMembers = manager.getAllMembersOf(party);
+
+            sender.sendMessage(TextStrings.colorize(TextStrings.MEMBERS_LIST, false));
+
+            for (String member : allMembers) {
+                sender.sendMessage(TextStrings.colorize("  &6- &7" + member, false));
+            }
+            sender.sendMessage(TextStrings.colorize(TextStrings.LINE, false));
+        } else {
+            sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_NOT_IN_A_PARTY));
+        }
+    }
+
+
+    public void list(Player sender, String[] strings) {
+        //party list
+        PartyManager manager = PartyManager.getInstance();
+        List<String> partyList = manager.getPartyList();
+
+        sender.sendMessage(TextStrings.colorize(TextStrings.PARTY_LIST, false));
+
+
+        if (partyList.isEmpty()) {
+            sender.sendMessage(TextStrings.colorize(TextStrings.THERE_ARE_NO_PARTY));
+            sender.sendMessage(TextStrings.colorize(TextStrings.LINE, false));
+            return;
+        }
+
+        for (String member : partyList) {
+            sender.sendMessage(TextStrings.colorize(member));
+        }
+        sender.sendMessage(TextStrings.colorize(TextStrings.LINE, false));
     }
 
     public static String getName() {

@@ -8,7 +8,6 @@ import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerCreatePartyEven
 import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerJoinPartyEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerPromotePartyEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Mechanics.InvitationTypes.InvitationType;
-import lk.cwresports.CwRPartyAPI.APIs.Mechanics.InvitationTypes.JoinToPartyInvitationType;
 import lk.cwresports.CwRPartyAPI.APIs.Mechanics.PlayerRemovingTypes.LeftPlayer;
 import lk.cwresports.CwRPartyAPI.APIs.Mechanics.PlayerRemovingTypes.RemovingTypes;
 import org.bukkit.Bukkit;
@@ -90,10 +89,8 @@ public class Party {
     public <T> boolean hasInvite(Player player, Class<T> to) {
         if (invitationTypesMap.containsKey(player)) {
             InvitationType type = invitationTypesMap.get(player);
-            if (type != null) {
-                if (type.getClass() == to) {
-                    return type.hasInvitation(player);
-                }
+            if (type != null && type.getClass() == to) {
+                return type.hasInvitation(player);
             }
         }
         return false;
@@ -131,10 +128,10 @@ public class Party {
             return;
         }
 
-        if (hasInvite(player, JoinToPartyInvitationType.class)) {
-            if (invitationTypesMap.containsKey(player)) {
+        if (invitationTypesMap.containsKey(player)) {
                 Set<Player> invitedPlayers = invitationTypesMap.get(player).getInvitedPlayers();
                 if (invitedPlayers.contains(player)) {
+
                     add_player_If_he_is_not_already_in_the_party_and_not_the_owner(player);
                     invitedPlayers.remove(player);
 
@@ -142,9 +139,10 @@ public class Party {
                     Event event = new PlayerJoinPartyEvent(player, this);
                     Bukkit.getPluginManager().callEvent(event);
                 }
-            }
         }
     }
+
+
 
     public void removePlayer(RemovingTypes type) {
         type.execute(this, this.manager);
@@ -184,11 +182,12 @@ public class Party {
     }
 
     public void promote(Player player) {
+        if (!list_of_players.contains(player)) return;
+
         // call event
         Event event = new PlayerPromotePartyEvent(this, player, owner);
         Bukkit.getPluginManager().callEvent(event);
 
-        if (!list_of_players.contains(player)) return;
         list_of_players.remove(player);
         addPlayerLast(owner);
         owner = player;
@@ -196,7 +195,9 @@ public class Party {
 
 
     private void add_player_If_he_is_not_already_in_the_party_and_not_the_owner(Player player) {
-        if (!(owner == player)) return;
+        if (owner == player) {
+            return;
+        }
         if (!list_of_players.contains(player)) {
             addPlayerLast(player);
         }

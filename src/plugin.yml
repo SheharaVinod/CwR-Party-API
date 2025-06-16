@@ -11,6 +11,8 @@ commands:
     permission: cwr-core.party-api.main
     permission-message: You don't have permission to execute this command.
     usage: /party help
+    aliases:
+      - p
 
 permissions:
   cwr-core.party-api.main:

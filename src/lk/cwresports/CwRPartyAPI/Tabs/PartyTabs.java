@@ -3,6 +3,7 @@ package lk.cwresports.CwRPartyAPI.Tabs;
 import lk.cwresports.CwRPartyAPI.Commands.PartyCommand;
 import lk.cwresports.CwRPartyAPI.Core.Party;
 import lk.cwresports.CwRPartyAPI.Core.PartyManager;
+import lk.cwresports.CwRPartyAPI.Utils.TextStrings;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -21,20 +22,20 @@ public class PartyTabs implements TabCompleter {
         }
 
         if (strings.length == 1) {
-            return List.of(PartyCommand.subCommands);
+            return TextStrings.sort(List.of(PartyCommand.subCommands), strings[0]);
         }
 
         if (strings.length > 1) {
             if (strings[0].equalsIgnoreCase(PartyCommand.CREATE)) {
-                return getWorldPlayers(player);
+                return TextStrings.sort(getWorldPlayers(player), strings[strings.length - 1]);
             } else if (strings[0].equalsIgnoreCase(PartyCommand.INVITE)) {
-                return getWorldPlayers(player);
+                return TextStrings.sort(getWorldPlayers(player), strings[strings.length - 1]);
             } else if (strings[0].equalsIgnoreCase(PartyCommand.KICK)) {
-                return partyMembers(player);
+                return TextStrings.sort(partyMembers(player), strings[strings.length - 1]);
             } else if (strings[0].equalsIgnoreCase(PartyCommand.JOIN)) {
-                return getWorldPlayers(player);
+                return TextStrings.sort(getWorldPlayers(player), strings[strings.length - 1]);
             } else if (strings[0].equalsIgnoreCase(PartyCommand.PROMOTE)) {
-                return partyMembers(player);
+                return TextStrings.sort(partyMembers(player), strings[strings.length - 1]);
             }
         }
 

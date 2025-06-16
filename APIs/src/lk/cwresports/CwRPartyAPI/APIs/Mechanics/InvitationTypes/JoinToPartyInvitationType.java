@@ -36,19 +36,17 @@ public class JoinToPartyInvitationType implements InvitationType {
         Bukkit.getPluginManager().callEvent(event);
 
         Bukkit.getScheduler().runTaskLater(party.getPlugin(), () -> {
+            if (party == null || !invited_players.containsKey(this.party)) return;
+
             Set<Player> players = invited_players.get(this.party);
-            if (!players.contains(this.player)) {
-                return;
+            if (players != null && players.contains(this.player)) {
+                players.remove(this.player);
+
+                if (this.player != null && this.player.isOnline()) {
+                    Event expireEvent = new PartyJoinInvitationExpireEvent(this.player, this.party);
+                    Bukkit.getPluginManager().callEvent(expireEvent);
+                }
             }
-
-            // call event
-            if (this.player == null) {
-                return;
-            }
-
-            Event expireEvent = new PartyJoinInvitationExpireEvent(this.player, this.party);
-            Bukkit.getPluginManager().callEvent(expireEvent);
-
         }, expire_in);
     }
 
@@ -69,6 +67,7 @@ public class JoinToPartyInvitationType implements InvitationType {
 
     @Override
     public boolean hasInvitation(Player player) {
+        if (this.party.isOpened()) return true;
         return invited_players.get(this.party).contains(player);
     }
 

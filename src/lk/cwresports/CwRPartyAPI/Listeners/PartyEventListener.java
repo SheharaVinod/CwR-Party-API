@@ -3,9 +3,13 @@ package lk.cwresports.CwRPartyAPI.Listeners;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyCloseEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyDisbandEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyOpenEvent;
-import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerCreatePartyEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.*;
 import lk.cwresports.CwRPartyAPI.Utils.TextStrings;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,12 +22,39 @@ public class PartyEventListener implements Listener {
         event.getOwner().sendMessage(TextStrings.colorize(TextStrings.PARTY_CREATED_SUCCESSFULLY));
     }
 
+    private void sendPartyInvite(Player owner, Player invitedPlayer) {
+        TextComponent message = new TextComponent(TextStrings.colorize(TextStrings.YOU_HAVE_INVITE.formatted(owner.getName())));
+        message.addExtra(new TextComponent("\n"));
+
+        TextComponent acceptButton = new TextComponent(ChatColor.GREEN + " [Join]");
+        TextComponent space = new TextComponent("  ");
+        TextComponent denyButton = new TextComponent(ChatColor.RED + "[Deny]");
+
+        acceptButton.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party join " + owner.getName()));
+        acceptButton.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click to accept " + owner.getName() + "'s party invitation").color(ChatColor.GREEN).create()));
+
+        // denyButton.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party deny " + owner.getName()));
+        denyButton.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click to deny " + owner.getName() + "'s party invitation").color(ChatColor.RED).create()));
+
+        message.addExtra(acceptButton);
+        message.addExtra(space);
+        message.addExtra(denyButton);
+
+        invitedPlayer.spigot().sendMessage(message);
+    }
+
     @EventHandler
     public void onOwnerInviteToParty(OwnerInviteToPartyEvent event) {
         Player owner = event.getOwner();
-        event.getInvitedPlayer().sendMessage(TextStrings.colorize(TextStrings.YOU_HAVE_INVITE.formatted(owner.getName())));
+        Player invitedPlayer = event.getInvitedPlayer();
+        if (owner == null) return;
+        owner.sendMessage(TextStrings.colorize(TextStrings.SEND_INVITATION.formatted(invitedPlayer.getName())));
+        // invitedPlayer.sendMessage(TextStrings.colorize(TextStrings.YOU_HAVE_INVITE.formatted(owner.getName())));
         // TODO: Create clickable massage to join.
-        event.getInvitedPlayer().sendMessage(TextStrings.colorize("&6/party join " + owner.getName()));
+        // invitedPlayer.sendMessage(TextStrings.colorize("&6/party join " + owner.getName()));
+
+        sendPartyInvite(owner, invitedPlayer);
+
     }
 
     @EventHandler
@@ -32,7 +63,7 @@ public class PartyEventListener implements Listener {
         Player joinedPlayer = event.getJoinedPlayer();
         Player owner = event.getParty().getOwner();
         for (Player member : members) {
-            member.sendMessage(TextStrings.colorize(TextStrings.NEW_MEMBER_JOIN));
+            member.sendMessage(TextStrings.colorize(TextStrings.NEW_MEMBER_JOIN.formatted(joinedPlayer.getName())));
         }
         joinedPlayer.sendMessage(TextStrings.colorize(TextStrings.WELCOME_JOIN_MASSAGE.formatted(owner.getName())));
     }
@@ -62,7 +93,11 @@ public class PartyEventListener implements Listener {
         Player owner = event.getParty().getOwner();
         List<Player> worldPLayers = owner.getWorld().getPlayers();
         for (Player worldPLayer : worldPLayers) {
-            worldPLayer.sendMessage(TextStrings.colorize(TextStrings.WORLD_PLAYER_PARTY_PUBLIC));
+            if (owner == worldPLayer) continue;
+            worldPLayer.sendMessage(TextStrings.colorize(TextStrings.WORLD_PLAYER_PARTY_PUBLIC.formatted(owner.getName())));
+            worldPLayer.sendMessage(TextStrings.colorize("&6/party join " + owner.getName()));
+            // TODO click able massage needed.
+            // sendPartyInvite(owner, worldPLayer);
         }
         owner.sendMessage(TextStrings.colorize(TextStrings.OWNER_OPEN_PARTY));
     }
