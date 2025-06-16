@@ -9,23 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Add More events and trying to change structure.">
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/OwnerTryToJoinHisOwnPartyEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/InvitationTypes/InvitationType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/InvitationTypes/JoinToPartyInvitationType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/InvitationTypes/MergeToPartyInvitationType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/PlayerRemovingTypes/KickPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/PlayerRemovingTypes/LeftPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/PlayerRemovingTypes/RemovingTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/Others/PartyJoinInvitationExpireEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/Others/PartyJoinInvitationExpireEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/AddPlayerLike.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/InviteTo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/Party.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/Party.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/PartyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/PartyManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/RemovePlayerLike.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Listeners/PartyEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Listeners/PartyEventListener.java" afterDir="false" />
-    </list>
+    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="re structured. and add more events , and push every event to Party.java class." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -173,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750029531239</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="re structured. and add more events , and push every event to Party.java class.">
+      <option name="closed" value="true" />
+      <created>1750047159101</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1750047159101</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -187,6 +179,7 @@
     <MESSAGE value="Register commands. Ready for testing." />
     <MESSAGE value="add text strings" />
     <MESSAGE value="Add More events and trying to change structure." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add More events and trying to change structure." />
+    <MESSAGE value="re structured. and add more events , and push every event to Party.java class." />
+    <option name="LAST_COMMIT_MESSAGE" value="re structured. and add more events , and push every event to Party.java class." />
   </component>
 </project>
