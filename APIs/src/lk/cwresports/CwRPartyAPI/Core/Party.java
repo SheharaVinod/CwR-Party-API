@@ -3,7 +3,14 @@ package lk.cwresports.CwRPartyAPI.Core;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyCloseEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyDisbandEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyOpenEvent;
-import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.*;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.OwnerTryToJoinHisOwnPartyEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerCreatePartyEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerJoinPartyEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerPromotePartyEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Mechanics.InvitationTypes.InvitationType;
+import lk.cwresports.CwRPartyAPI.APIs.Mechanics.InvitationTypes.JoinToPartyInvitationType;
+import lk.cwresports.CwRPartyAPI.APIs.Mechanics.PlayerRemovingTypes.LeftPlayer;
+import lk.cwresports.CwRPartyAPI.APIs.Mechanics.PlayerRemovingTypes.RemovingTypes;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -14,23 +21,16 @@ import java.util.*;
 public class Party {
     private Player owner;
     private final LinkedList<Player> list_of_players = new LinkedList<>();
-    private final Set<Player> invited_players = new HashSet<>();
-    private final Set<Player> invited_parties = new HashSet<>();
+
     private boolean isOpened = false;
     private final PartyManager manager;
     private final Plugin plugin;
 
-    // times.
-    private final long party_join_invite_expired_in;
-    private final long party_merge_invite_expired_in;
+    private final Map<Player, InvitationType> invitationTypesMap = new HashMap<>();
 
-
-    public Party(Player owner, Plugin plugin, long join_exp, long merge_exp) {
+    public Party(Player owner, Plugin plugin) {
         this.owner = owner;
         this.plugin = plugin;
-
-        this.party_merge_invite_expired_in = merge_exp;
-        this.party_join_invite_expired_in = join_exp;
 
         manager = PartyManager.getInstance();
         manager.registerPlayer(owner, this);
@@ -46,6 +46,10 @@ public class Party {
         } else {
             return getCoreOwner();
         }
+    }
+
+    public Plugin getPlugin() {
+        return plugin;
     }
 
     public Player getRealOwner() {
@@ -79,39 +83,26 @@ public class Party {
         return playerList;
     }
 
-    @SuppressWarnings("Please don't use derectly use PartyManager instead.")
-    public void invite(Player player, InviteTo to) {
-        if (to == InviteTo.JOIN_PARTY) {
-            // call event
-            Event event = new OwnerInviteToPartyEvent(this, player);
-            Bukkit.getPluginManager().callEvent(event);
-
-            invited_players.add(player);
-
-            Bukkit.getScheduler().runTaskLater(plugin, party_join_invite_expired_in,)
-        } else if (to == InviteTo.MERGE_WITH_PARTY) {
-            boolean inAParty = manager.isInAParty(player);
-            if (inAParty) {
-                // call event
-                Event event = new OwnerInviteToMergePartyEvent(this, manager.getPartyOf(player));
-                Bukkit.getPluginManager().callEvent(event);
-
-                invited_parties.add(player);
-            }
-        }
+    public void invite(Player player, InvitationType to) {
+        invitationTypesMap.put(player, to);
     }
 
-    public boolean hasInvite(Player player) {
-        if (isOpened) return true;
-        return invited_players.contains(player);
+    public <T> boolean hasInvite(Player player, Class<T> to) {
+        if (invitationTypesMap.containsKey(player)) {
+            InvitationType type = invitationTypesMap.get(player);
+            if (type != null) {
+                if (type.getClass() == to) {
+                    return type.hasInvitation(player);
+                }
+            }
+        }
+        return false;
     }
 
     public void denied(Player player) {
-        // call event
-        Event event = new PlayerDeniedInvitationEvent(player, this);
-        Bukkit.getPluginManager().callEvent(event);
-
-        invited_players.remove(player);
+        if (invitationTypesMap.containsKey(player)) {
+            invitationTypesMap.get(player).denied(player);
+        }
     }
 
     public void disbandParty() {
@@ -120,28 +111,43 @@ public class Party {
         Bukkit.getPluginManager().callEvent(event);
 
         for (Player member : getMembers()) {
-            removePlayer(member);
+            removePlayer(new LeftPlayer(member, list_of_players));
         }
+
+        invitationTypesMap.clear();
         manager.unregisterPlayer(owner);
     }
 
     public void addPlayer(Player player) {
-        if (player == owner) return;
+        if (player == owner) {
+            // call event.
+            Event event = new OwnerTryToJoinHisOwnPartyEvent(player, this);
+            Bukkit.getPluginManager().callEvent(event);
+            return;
+        }
 
         if (isOpened) {
             add_player_If_he_is_not_already_in_the_party_and_not_the_owner(player);
             return;
         }
 
-        if (invited_players.contains(player)) {
-            add_player_If_he_is_not_already_in_the_party_and_not_the_owner(player);
-            invited_players.remove(player);
+        if (hasInvite(player, JoinToPartyInvitationType.class)) {
+            if (invitationTypesMap.containsKey(player)) {
+                Set<Player> invitedPlayers = invitationTypesMap.get(player).getInvitedPlayers();
+                if (invitedPlayers.contains(player)) {
+                    add_player_If_he_is_not_already_in_the_party_and_not_the_owner(player);
+                    invitedPlayers.remove(player);
+
+                    // call event
+                    Event event = new PlayerJoinPartyEvent(player, this);
+                    Bukkit.getPluginManager().callEvent(event);
+                }
+            }
         }
     }
 
-    public void removePlayer(Player player) {
-        manager.unregisterPlayer(player);
-        list_of_players.remove(player);
+    public void removePlayer(RemovingTypes type) {
+        type.execute(this, this.manager);
     }
 
     public void open() {

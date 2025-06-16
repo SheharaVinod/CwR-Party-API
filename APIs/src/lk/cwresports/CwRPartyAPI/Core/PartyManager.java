@@ -27,11 +27,11 @@ public class PartyManager {
     }
 
 
-    protected void registerPlayer(Player player, Party party) {
+    public void registerPlayer(Player player, Party party) {
         playerPartyMap.put(player, party);
     }
 
-    protected void unregisterPlayer(Player player) {
+    public void unregisterPlayer(Player player) {
         playerPartyMap.remove(player);
     }
 }

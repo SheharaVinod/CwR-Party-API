@@ -23,7 +23,7 @@ public class PartyJoinInvitationExpireEvent extends Event {
         return inviteFrom;
     }
 
-    public Player getInvitedPlayer() {
+    public Player getInvitedTo() {
         return invitedPlayer;
     }
 

@@ -2,35 +2,28 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="CwR-Party-API:jar" />
+      <artifact name="CwR-Party-API-APIs:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="add text strings">
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/Others/PartyJoinInvitationExpireEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/Others/PartyMergeInvitationExpireEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/OwnerInviteToMergePartyEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/AddPlayerLike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/InviteTo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/RemovePlayerLike.java" afterDir="false" />
+    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Add More events and trying to change structure.">
+      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/OwnerTryToJoinHisOwnPartyEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/InvitationTypes/InvitationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/InvitationTypes/JoinToPartyInvitationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/InvitationTypes/MergeToPartyInvitationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/PlayerRemovingTypes/KickPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/PlayerRemovingTypes/LeftPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Mechanics/PlayerRemovingTypes/RemovingTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/OwnerInviteToPartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/OwnerInviteToPartyEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/OwnerOfflineEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/OwnerOfflineEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyCloseEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyRelated/PartyCloseEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyDisbandEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyRelated/PartyDisbandEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyInvitePartyToMergeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyRelated/PartyInvitePartyToMergeEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyOpenEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PartyRelated/PartyOpenEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerCreatePartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/PlayerCreatePartyEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerDeniedInvitationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/PlayerDeniedInvitationEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerJoinPartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/PlayerJoinPartyEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerKickPartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/PlayerKickPartyEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerLeavePartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/PlayerLeavePartyEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerPromotePartyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/PlayerRelated/PlayerPromotePartyEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/Others/PartyJoinInvitationExpireEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/APIs/Events/Others/PartyJoinInvitationExpireEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/AddPlayerLike.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/InviteTo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/Party.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/Party.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Commands/PartyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Commands/PartyCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/PartyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/PartyManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/src/lk/cwresports/CwRPartyAPI/Core/RemovePlayerLike.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Listeners/PartyEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Listeners/PartyEventListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +42,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -171,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750027683157</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add More events and trying to change structure.">
+      <option name="closed" value="true" />
+      <created>1750029531239</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1750029531239</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -184,6 +186,7 @@
     <MESSAGE value="Adding Tab complete functionality." />
     <MESSAGE value="Register commands. Ready for testing." />
     <MESSAGE value="add text strings" />
-    <option name="LAST_COMMIT_MESSAGE" value="add text strings" />
+    <MESSAGE value="Add More events and trying to change structure." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add More events and trying to change structure." />
   </component>
 </project>
