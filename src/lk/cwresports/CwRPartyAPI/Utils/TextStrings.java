@@ -49,7 +49,7 @@ public class TextStrings {
     public static String MEMBERS_LIST = "&a&m&l------------&a&lMembers-List&a&m&l--------------";
 
 
-    public static String[] help = {
+    public static String[] HELP = {
             "&a&m&l-------------------------------------",
             " &6You can party with you friends,",
             " &6simply create party and invite your friends.",

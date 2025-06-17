@@ -10,11 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Fix a lot of bugs, and add clickable massages when invited.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Listeners/PartyEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Listeners/PartyEventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Utils/ConfigUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Utils/ConfigUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Utils/TextStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Utils/TextStrings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
