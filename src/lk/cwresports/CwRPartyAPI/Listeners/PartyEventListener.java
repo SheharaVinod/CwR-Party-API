@@ -26,15 +26,15 @@ public class PartyEventListener implements Listener {
         TextComponent message = new TextComponent(TextStrings.colorize(TextStrings.YOU_HAVE_INVITE.formatted(owner.getName())));
         message.addExtra(new TextComponent("\n"));
 
-        TextComponent acceptButton = new TextComponent(ChatColor.GREEN + " [Join]");
+        TextComponent acceptButton = new TextComponent(ChatColor.GREEN + TextStrings.CLICKABLE_JOIN);
         TextComponent space = new TextComponent("  ");
-        TextComponent denyButton = new TextComponent(ChatColor.RED + "[Deny]");
+        TextComponent denyButton = new TextComponent(ChatColor.RED + TextStrings.CLICKABLE_DENY);
 
         acceptButton.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party join " + owner.getName()));
-        acceptButton.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click to accept " + owner.getName() + "'s party invitation").color(ChatColor.GREEN).create()));
+        acceptButton.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(TextStrings.HOVER_ABLE_ACCEPT_MASSAGE.formatted(owner.getName())).color(ChatColor.GREEN).create()));
 
         // denyButton.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party deny " + owner.getName()));
-        denyButton.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click to deny " + owner.getName() + "'s party invitation").color(ChatColor.RED).create()));
+        denyButton.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(TextStrings.HOVER_ABLE_DENY_MASSAGE.formatted(owner.getName())).color(ChatColor.RED).create()));
 
         message.addExtra(acceptButton);
         message.addExtra(space);
@@ -54,7 +54,6 @@ public class PartyEventListener implements Listener {
         // invitedPlayer.sendMessage(TextStrings.colorize("&6/party join " + owner.getName()));
 
         sendPartyInvite(owner, invitedPlayer);
-
     }
 
     @EventHandler

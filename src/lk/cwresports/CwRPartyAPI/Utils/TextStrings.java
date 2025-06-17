@@ -37,6 +37,13 @@ public class TextStrings {
     public static String THERE_ARE_NO_PARTY = "&7Currently there are no party here.";
     public static String SEND_INVITATION = "&7You are invite to %s.";
 
+    public static String CLICKABLE_JOIN = "[Join]";
+    public static String CLICKABLE_DENY = "[Deny]";
+
+
+    public static String HOVER_ABLE_ACCEPT_MASSAGE = "Click to accept %s's party invitation";
+    public static String HOVER_ABLE_DENY_MASSAGE = "Click to deny %s's party invitation";
+
     public static String LINE = "&a&m&l-------------------------------------";
     public static String PARTY_LIST = "&a&m&l--------------&a&lParty-List&a&m&l--------------";
     public static String MEMBERS_LIST = "&a&m&l------------&a&lMembers-List&a&m&l--------------";

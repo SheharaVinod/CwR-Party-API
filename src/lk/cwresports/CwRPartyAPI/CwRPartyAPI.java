@@ -3,6 +3,7 @@ package lk.cwresports.CwRPartyAPI;
 import lk.cwresports.CwRPartyAPI.Commands.PartyCommand;
 import lk.cwresports.CwRPartyAPI.Listeners.PartyEventListener;
 import lk.cwresports.CwRPartyAPI.Tabs.PartyTabs;
+import lk.cwresports.CwRPartyAPI.Utils.ConfigUtils;
 import lk.cwresports.CwRPartyAPI.Utils.CwRBetterConsoleLogger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,6 +13,9 @@ public class CwRPartyAPI extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+        ConfigUtils.reload(this);
+
         // register commands
         getCommand(PartyCommand.getName()).setExecutor(new PartyCommand(this));
 
