@@ -9,8 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Fix a lot of bugs, and add clickable massages when invited.">
-      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Utils/TextStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Utils/TextStrings.java" afterDir="false" />
+    <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Change Help variable name">
+      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Commands/PartyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Commands/PartyCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750116324275</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Change Help variable name">
+      <option name="closed" value="true" />
+      <created>1750121262536</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1750121262536</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -199,6 +207,7 @@
     <MESSAGE value="Add More events and trying to change structure." />
     <MESSAGE value="re structured. and add more events , and push every event to Party.java class." />
     <MESSAGE value="Fix a lot of bugs, and add clickable massages when invited." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix a lot of bugs, and add clickable massages when invited." />
+    <MESSAGE value="Change Help variable name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change Help variable name" />
   </component>
 </project>

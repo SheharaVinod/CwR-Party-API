@@ -294,7 +294,7 @@ public class PartyCommand implements CommandExecutor {
 
     private void help(Player sender, String[] strings) {
         //party help
-        for (String massages : TextStrings.help) {
+        for (String massages : TextStrings.HELP) {
             sender.sendMessage(TextStrings.colorize(massages, false));
         }
     }
