@@ -64,6 +64,7 @@ public class TextStrings {
             "   &7/party close - make party private",
             "   &7/party members - show members",
             "   &7/party list - get party list",
+            "   &7/party chat - toggle party chat",
             "   &7/party promote <player> - promote player to owner",
             "&a&m&l-------------------------------------"
     };

@@ -32,6 +32,7 @@ public class PartyCommand implements CommandExecutor {
     public static final String CLOSE = "close";
     public static final String MEMBERS = "members";
     public static final String LIST = "list";
+    public static final String CHAT = "chat";
 
     public static final String[] subCommands = {
             CREATE,
@@ -45,7 +46,8 @@ public class PartyCommand implements CommandExecutor {
             OPEN,
             CLOSE,
             MEMBERS,
-            LIST
+            LIST,
+            CHAT
     };
 
     public PartyCommand(Plugin plugin) {
@@ -88,6 +90,8 @@ public class PartyCommand implements CommandExecutor {
                 members(sender, strings);
             } else if (strings[0].equalsIgnoreCase(LIST)) {
                 list(sender, strings);
+            } else if (strings[0].equalsIgnoreCase(CHAT)) {
+                chat(sender, strings);
             }
         }
 
@@ -337,6 +341,11 @@ public class PartyCommand implements CommandExecutor {
             sender.sendMessage(TextStrings.colorize(member));
         }
         sender.sendMessage(TextStrings.colorize(TextStrings.LINE, false));
+    }
+
+
+    public void chat(Player sender, String[] strings) {
+        PartyChatCommand.togglePartyChat(sender);
     }
 
     public static String getName() {

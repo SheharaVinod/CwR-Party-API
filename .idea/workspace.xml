@@ -10,7 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdefc8c-dbaf-4335-8768-8703ec007a6b" name="Changes" comment="Change Help variable name">
+      <change afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Commands/PartyChatCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Listeners/PartyChatEventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Commands/PartyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Commands/PartyCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/CwRPartyAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Utils/TextStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lk/cwresports/CwRPartyAPI/Utils/TextStrings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750121262536</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Change Help variable name">
+      <option name="closed" value="true" />
+      <created>1750121323702</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1750121323702</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

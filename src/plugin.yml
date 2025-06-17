@@ -14,6 +14,14 @@ commands:
     aliases:
       - p
 
+  party-chat:
+    description: party chat command.
+    permission: cwr-core.party-api.main
+    permission-message: You don't have permission to execute this command.
+    usage: /party-chat
+    aliases:
+      - pc
+
 permissions:
   cwr-core.party-api.main:
     description: this permission need to execute every party related command. basically for the main command.
