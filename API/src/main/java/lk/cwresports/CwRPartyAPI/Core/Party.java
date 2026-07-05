@@ -23,6 +23,7 @@ public class Party {
     private Player owner;
     private final LinkedList<Player> list_of_players = new LinkedList<>();
     private final long createdAt;
+    private final PartyChat partyChat;
 
     private boolean isOpened = false;
     private final PartyManager manager;
@@ -37,6 +38,8 @@ public class Party {
 
         manager = PartyManager.getInstance();
         manager.registerPlayer(owner, this);
+
+        partyChat = new PartyChat(this, new PartyChatFormatter());
 
         // call event
         Event event = new PlayerCreatePartyEvent(owner, this);
@@ -57,6 +60,10 @@ public class Party {
 
     public long getCreatedAt() {
         return createdAt;
+    }
+
+    public PartyChat getPartyChat() {
+        return partyChat;
     }
 
     public Player getRealOwner() {
