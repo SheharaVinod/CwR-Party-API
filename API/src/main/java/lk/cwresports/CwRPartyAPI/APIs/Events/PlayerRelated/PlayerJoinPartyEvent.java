@@ -26,6 +26,14 @@ public class PlayerJoinPartyEvent extends Event {
         return party.getAllMembersExcept(joinedPlayer);
     }
 
+    public Player getOwner() {
+        return party.getOwner();
+    }
+
+    public boolean isOwnerJoining() {
+        return party.isOwner(joinedPlayer);
+    }
+
     public Party getParty() {
         return party;
     }

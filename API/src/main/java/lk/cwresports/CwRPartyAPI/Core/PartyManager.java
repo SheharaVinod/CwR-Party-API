@@ -2,10 +2,7 @@ package lk.cwresports.CwRPartyAPI.Core;
 
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PartyManager {
     private static PartyManager instance;
@@ -43,6 +40,10 @@ public class PartyManager {
             names.add(player.getName());
         }
         return names;
+    }
+
+    public Collection<Party> getAllParties() {
+        return new HashSet<>(playerPartyMap.values());
     }
 
     public static PartyManager getInstance() {

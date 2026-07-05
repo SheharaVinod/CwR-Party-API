@@ -4,10 +4,12 @@ import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyCloseEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyDisbandEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PartyRelated.PartyOpenEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.OwnerTryToJoinHisOwnPartyEvent;
+import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PartyOwnerChangeEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerCreatePartyEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerJoinPartyEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Events.PlayerRelated.PlayerPromotePartyEvent;
 import lk.cwresports.CwRPartyAPI.APIs.Mechanics.InvitationTypes.InvitationType;
+import lk.cwresports.CwRPartyAPI.APIs.Mechanics.PlayerRemovingTypes.KickPlayer;
 import lk.cwresports.CwRPartyAPI.APIs.Mechanics.PlayerRemovingTypes.LeftPlayer;
 import lk.cwresports.CwRPartyAPI.APIs.Mechanics.PlayerRemovingTypes.RemovingTypes;
 import org.bukkit.Bukkit;
@@ -20,6 +22,7 @@ import java.util.*;
 public class Party {
     private Player owner;
     private final LinkedList<Player> list_of_players = new LinkedList<>();
+    private final long createdAt;
 
     private boolean isOpened = false;
     private final PartyManager manager;
@@ -30,6 +33,7 @@ public class Party {
     public Party(Player owner, Plugin plugin) {
         this.owner = owner;
         this.plugin = plugin;
+        this.createdAt = System.currentTimeMillis();
 
         manager = PartyManager.getInstance();
         manager.registerPlayer(owner, this);
@@ -49,6 +53,10 @@ public class Party {
 
     public Plugin getPlugin() {
         return plugin;
+    }
+
+    public long getCreatedAt() {
+        return createdAt;
     }
 
     public Player getRealOwner() {
@@ -148,6 +156,14 @@ public class Party {
         type.execute(this, this.manager);
     }
 
+    public void removePlayer(Player player) {
+        removePlayer(new LeftPlayer(player, list_of_players));
+    }
+
+    public void kickPlayer(Player player) {
+        removePlayer(new KickPlayer(player, list_of_players));
+    }
+
     public void open() {
         isOpened = true;
 
@@ -184,13 +200,19 @@ public class Party {
     public void promote(Player player) {
         if (!list_of_players.contains(player)) return;
 
+        Player oldOwner = owner;
+
         // call event
-        Event event = new PlayerPromotePartyEvent(this, player, owner);
+        Event event = new PlayerPromotePartyEvent(this, player, oldOwner);
         Bukkit.getPluginManager().callEvent(event);
 
         list_of_players.remove(player);
-        addPlayerLast(owner);
+        addPlayerLast(oldOwner);
         owner = player;
+
+        // call owner change event
+        Event changeEvent = new PartyOwnerChangeEvent(this, oldOwner, player);
+        Bukkit.getPluginManager().callEvent(changeEvent);
     }
 
 
