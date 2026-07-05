@@ -17,9 +17,10 @@ public class PartyTabs implements TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (!(commandSender instanceof Player player)) {
+        if (!(commandSender instanceof Player)) {
             return List.of();
         }
+        Player player = (Player) commandSender;
 
         if (strings.length == 1) {
             return TextStrings.sort(List.of(PartyCommand.subCommands), strings[0]);

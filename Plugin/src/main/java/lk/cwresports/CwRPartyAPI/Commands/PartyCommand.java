@@ -56,10 +56,11 @@ public class PartyCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (!(commandSender instanceof Player sender)) {
+        if (!(commandSender instanceof Player)) {
             CwRBetterConsoleLogger.log("This command can be only executed by a player.");
             return true;
         }
+        Player sender = (Player) commandSender;
 
         if (strings.length == 0) {
             help(sender, strings);

@@ -3,7 +3,12 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .idea/
-CwR-Party-API.iml
+*.iml
+
+### Maven ###
+target/
+API/target/
+Plugin/target/
 
 ### Eclipse ###
 .apt_generated

@@ -1,6 +1,6 @@
 name: CwRPartyAPI
 main: lk.cwresports.CwRPartyAPI.CwRPartyAPI
-version: 1.0.0
+version: ${project.version}
 author: Mr_Unknown
 website: cwresport.lk
 description: Party api for manage players with party.

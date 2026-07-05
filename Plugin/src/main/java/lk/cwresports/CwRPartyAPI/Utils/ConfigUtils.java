@@ -78,7 +78,8 @@ public class ConfigUtils {
                 if (configValue == null) continue;
 
                 if (fieldType.isArray() && fieldType.getComponentType() == String.class) {
-                    if (configValue instanceof List<?> list) {
+                    if (configValue instanceof List<?>) {
+                        List<?> list = (List<?>) configValue;
                         String[] array = new String[list.size()];
                         for (int i = 0; i < list.size(); i++) {
                             array[i] = list.get(i).toString();

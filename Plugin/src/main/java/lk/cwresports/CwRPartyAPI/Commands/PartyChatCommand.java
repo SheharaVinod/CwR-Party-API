@@ -16,9 +16,10 @@ public class PartyChatCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (!(commandSender instanceof Player player)) {
+        if (!(commandSender instanceof Player)) {
             return true;
         }
+        Player player = (Player) commandSender;
 
         if (!PartyManager.getInstance().isInAParty(player)) {
             return true;
