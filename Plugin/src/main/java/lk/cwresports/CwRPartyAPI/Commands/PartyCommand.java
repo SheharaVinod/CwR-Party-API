@@ -346,6 +346,20 @@ public class PartyCommand implements CommandExecutor {
 
 
     public void chat(Player sender, String[] strings) {
+        if (!PartyManager.getInstance().isInAParty(sender)) {
+            sender.sendMessage(TextStrings.colorize(TextStrings.YOU_ARE_NOT_IN_A_PARTY));
+            return;
+        }
+
+        if (strings.length > 1) {
+            String[] messageArgs = new String[strings.length - 1];
+            System.arraycopy(strings, 1, messageArgs, 0, strings.length - 1);
+            String message = String.join(" ", messageArgs);
+            Party party = PartyManager.getInstance().getPartyOf(sender);
+            party.getPartyChat().sendMessage(sender, message);
+            return;
+        }
+
         PartyChatCommand.togglePartyChat(sender);
     }
 
