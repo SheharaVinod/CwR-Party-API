@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 
 public class PartyChatFormatter {
     public static final String DEFAULT_FORMAT = "&a%player_name% &f&l-&r &e{message}";
+    private static String currentFormat = DEFAULT_FORMAT;
 
     private String format;
 
@@ -12,7 +13,11 @@ public class PartyChatFormatter {
     }
 
     public PartyChatFormatter() {
-        this(DEFAULT_FORMAT);
+        this(currentFormat);
+    }
+
+    public static void setCurrentFormat(String format) {
+        currentFormat = format;
     }
 
     public String format(String playerName, String message) {

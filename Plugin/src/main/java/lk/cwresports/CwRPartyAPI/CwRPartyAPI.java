@@ -2,6 +2,7 @@ package lk.cwresports.CwRPartyAPI;
 
 import lk.cwresports.CwRPartyAPI.Commands.PartyChatCommand;
 import lk.cwresports.CwRPartyAPI.Commands.PartyCommand;
+import lk.cwresports.CwRPartyAPI.Core.PartyChatFormatter;
 import lk.cwresports.CwRPartyAPI.Listeners.PartyChatEventListener;
 import lk.cwresports.CwRPartyAPI.Listeners.PartyEventListener;
 import lk.cwresports.CwRPartyAPI.Tabs.PartyTabs;
@@ -17,6 +18,9 @@ public class CwRPartyAPI extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         ConfigUtils.reload(this);
+
+        String chatFormat = getConfig().getString("PartyChat.format", PartyChatFormatter.DEFAULT_FORMAT);
+        PartyChatFormatter.setCurrentFormat(chatFormat);
 
         // register commands
         getCommand(PartyCommand.getName()).setExecutor(new PartyCommand(this));
