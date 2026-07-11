@@ -4,6 +4,7 @@ version: ${project.version}
 author: Mr_Unknown
 website: cwresport.lk
 description: Party api for manage players with party.
+softdepend: [PlaceholderAPI]
 
 commands:
   party:

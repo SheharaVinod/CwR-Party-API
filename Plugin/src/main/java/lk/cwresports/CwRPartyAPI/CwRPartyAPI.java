@@ -3,6 +3,7 @@ package lk.cwresports.CwRPartyAPI;
 import lk.cwresports.CwRPartyAPI.Commands.PartyChatCommand;
 import lk.cwresports.CwRPartyAPI.Commands.PartyCommand;
 import lk.cwresports.CwRPartyAPI.Core.PartyChatFormatter;
+import lk.cwresports.CwRPartyAPI.Expansions.CwRPartyExpansion;
 import lk.cwresports.CwRPartyAPI.Listeners.PartyChatEventListener;
 import lk.cwresports.CwRPartyAPI.Listeners.PartyEventListener;
 import lk.cwresports.CwRPartyAPI.Tabs.PartyTabs;
@@ -32,6 +33,12 @@ public class CwRPartyAPI extends JavaPlugin {
         // register listeners
         Bukkit.getPluginManager().registerEvents(new PartyEventListener(), this);
         Bukkit.getPluginManager().registerEvents(new PartyChatEventListener(), this);
+
+        // register PlaceholderAPI expansion
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new CwRPartyExpansion().register();
+            CwRBetterConsoleLogger.log("&aPlaceholderAPI expansion registered.");
+        }
 
         CwRBetterConsoleLogger.log("&6------------------------");
         CwRBetterConsoleLogger.log("&6------CwR-Party-API-----");
